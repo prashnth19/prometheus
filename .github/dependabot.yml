@@ -1,27 +1,8 @@
 version: 2
 updates:
-  - package-ecosystem: "docker"
-    directory: "/"
+  - package-ecosystem: "pip"
+    directory: "/"  # Root directory where requirements.txt is located
     schedule:
-      interval: "monthly"
-  - package-ecosystem: "github-actions"
-    directories:
-      - "/"
-      - "/scripts"
-    schedule:
-      interval: "monthly"
-  - package-ecosystem: "gomod"
-    directories:
-      - "/"
-      - "/documentation/examples/remote_storage"
-      - "/internal/tools"
-    schedule:
-      interval: "monthly"
-    groups:
-      k8s.io:
-        patterns:
-          - "k8s.io/*"
-      go.opentelemetry.io:
-        patterns:
-          - "go.opentelemetry.io/*"
-    open-pull-requests-limit: 20
+      interval: "daily"  # Check for updates every day
+    open-pull-requests-limit: 5
+    # Removed 'allow' block to include both direct and transitive dependencies
